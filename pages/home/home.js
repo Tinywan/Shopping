@@ -26,14 +26,38 @@ Page({
       });
     });
     home.getThemeData((res)=>{
-      console.log(res);
       this.setData({
         'themeArr':res
       });
     });
+
+    /*获取单品信息*/
+    home.getProductorData((res)=>{
+      this.setData({
+        "productsArr": res
+      });
+    });
+
   },
 
   // callBack:function(res){
   //   console.log(res);
   // }
+
+  onProductsItemTap:function(event){
+    var id = home.getDataSet(event,'id');
+    console.log(id);
+    wx.navigateTo({
+      url: '../product/product?id='+id
+    })
+  },
+
+  onThemesItemTap:function(event){
+    var id = home.getDataSet(event,'id');
+    var name = home.getDataSet(event,'name');
+    wx.navigateTo({
+      url: '../theme/theme?id='+id+'&name='+name
+    })
+  },
+
 })

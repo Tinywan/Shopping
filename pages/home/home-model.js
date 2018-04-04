@@ -6,6 +6,7 @@ class Home extends Base{
     super(); 
   }
 
+  // Banner 图片信息
   getBannerData(id, callback){
     var params = {
       "url":'banner/'+id,
@@ -34,6 +35,18 @@ class Home extends Base{
     }
     this.request(params);
   }
+
+  /*首页部分商品*/
+  getProductorData(callback) {
+    var params = {
+      url: 'product/recent',
+      sCallback: function (res) {
+        callback && callback(res);
+      }
+    };
+    this.request(params);
+  }
+
 }
 
 export {Home}
